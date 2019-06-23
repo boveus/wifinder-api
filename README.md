@@ -57,9 +57,9 @@ bundle install
 Identify the wireless interface you want to set to monitor mode using `ip a` or `ifconfig`.
 Set the device to monitor mode using the following commands
 ```bash
-`sudo ip link set <interface> down`
-`sudo iwconfig <interface> mode monitor`
-`sudo ip link set <interface> up`
+sudo ip link set <interface> down
+sudo iwconfig <interface> mode monitor
+sudo ip link set <interface> up
 ```
 `ifconfig` is a deprecated tool, but it is still available in some linux distros and does the same thing:
 ```bash
