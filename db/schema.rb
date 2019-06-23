@@ -10,12 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_163007) do
+ActiveRecord::Schema.define(version: 2019_06_23_170317) do
 
   create_table "devices", force: :cascade do |t|
     t.string "mac_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "devices_people", force: :cascade do |t|
+    t.integer "person_id"
+    t.integer "device_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_id"], name: "index_devices_people_on_device_id"
+    t.index ["person_id"], name: "index_devices_people_on_person_id"
+  end
+
+  create_table "devices_ssids", force: :cascade do |t|
+    t.integer "device_id"
+    t.integer "ssid_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_id"], name: "index_devices_ssids_on_device_id"
+    t.index ["ssid_id"], name: "index_devices_ssids_on_ssid_id"
   end
 
   create_table "packets", force: :cascade do |t|
@@ -25,6 +43,12 @@ ActiveRecord::Schema.define(version: 2019_06_23_163007) do
     t.string "protocol"
     t.string "info"
     t.string "ssid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "nickname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
