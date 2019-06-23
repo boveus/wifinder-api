@@ -1,4 +1,4 @@
-class CreateDevicessids < ActiveRecord::Migration[5.2]
+class CreateDevicesssids < ActiveRecord::Migration[5.2]
   def change
     create_table :devicessids do |t|
       t.belongs_to :device, index: true
