@@ -1,2 +1,0 @@
-class Devicessid < ApplicationRecord
-end
