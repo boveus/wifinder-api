@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_170317) do
+ActiveRecord::Schema.define(version: 2019_06_23_184833) do
+
+  create_table "activetimes", force: :cascade do |t|
+    t.datetime "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "device_activetimes", force: :cascade do |t|
+    t.integer "device_id"
+    t.integer "activetime_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activetime_id"], name: "index_device_activetimes_on_activetime_id"
+    t.index ["device_id"], name: "index_device_activetimes_on_device_id"
+  end
 
   create_table "devices", force: :cascade do |t|
     t.string "mac_address"
