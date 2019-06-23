@@ -1,8 +1,4 @@
-require 'task_helpers/packet_ingestion_behavior'
-
 class PacketStreamIngestor
-  include PacketIngestionBehavior
-
   def clean_stream_for_packet(stream_row)
     clean_line = stream_row.split("\t")
     if clean_line.length > 4
@@ -32,9 +28,9 @@ class PacketStreamIngestor
   def ingest_from_stream(stream_row)
     packet = create_packet_from_stream(stream_row)
     if packet
-      device = Device.create(mac_address: packet.source)
+      device = Device.find_or_create_by(mac_address: packet.source)
       if packet.ssid
-        device.ssids << Ssid.create(name: packet.ssid)
+        device.ssids << Ssid.find_or_create_by(name: packet.ssid)
       end
     end
   end

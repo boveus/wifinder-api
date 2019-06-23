@@ -1,6 +1,4 @@
 class PacketIngestor
-  include PacketIngestionBehavior
-
   def initialize(csv_path = false)
     @packets = PacketService.new(csv_path).packets
     @db = SQLite3::Database.new("./db/wifinder.db")
