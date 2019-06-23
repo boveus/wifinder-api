@@ -1,0 +1,2 @@
+class Devicessid < ApplicationRecord
+end
