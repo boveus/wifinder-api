@@ -6,7 +6,7 @@ class CreatePackets < ActiveRecord::Migration[5.2]
       t.string :destination
       t.string :protocol
       t.string :info
-      t.ssid :varchar
+      t.string :ssid
       t.timestamps
     end
   end

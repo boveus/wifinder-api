@@ -1,0 +1,2 @@
+class Ssid < ApplicationRecord
+end
