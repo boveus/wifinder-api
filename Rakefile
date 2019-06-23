@@ -3,4 +3,8 @@
 
 require_relative 'config/application'
 
+Dir[File.dirname(__FILE__) + "/tasks/*.rb"].sort.each do |path|
+  require path
+end
+
 Rails.application.load_tasks
