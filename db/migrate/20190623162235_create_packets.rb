@@ -1,7 +1,7 @@
 class CreatePackets < ActiveRecord::Migration[5.2]
   def change
     create_table :packets do |t|
-      t.date :capturetime
+      t.datetime :capturetime
       t.string :source
       t.string :destination
       t.string :protocol

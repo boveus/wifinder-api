@@ -29,8 +29,7 @@ class PacketStreamIngestor
     packet = create_packet_from_stream(stream_row)
     if packet
       device = Device.find_or_create_by(mac_address: packet.source)
-      binding.pry
-      # device.active_times.find_or_create_by(time: )
+      device.activetimes << Activetime.find_or_create_by(time: packet.capturetime)
       if packet.ssid
         device.ssids << Ssid.find_or_create_by(name: packet.ssid)
       end

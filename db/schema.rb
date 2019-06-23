@@ -18,13 +18,13 @@ ActiveRecord::Schema.define(version: 2019_06_23_184833) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "device_activetimes", force: :cascade do |t|
+  create_table "activetimes_devices", force: :cascade do |t|
     t.integer "device_id"
     t.integer "activetime_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["activetime_id"], name: "index_device_activetimes_on_activetime_id"
-    t.index ["device_id"], name: "index_device_activetimes_on_device_id"
+    t.index ["activetime_id"], name: "index_activetimes_devices_on_activetime_id"
+    t.index ["device_id"], name: "index_activetimes_devices_on_device_id"
   end
 
   create_table "devices", force: :cascade do |t|
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_06_23_184833) do
   end
 
   create_table "packets", force: :cascade do |t|
-    t.date "capturetime"
+    t.datetime "capturetime"
     t.string "source"
     t.string "destination"
     t.string "protocol"
