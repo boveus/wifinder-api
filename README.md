@@ -11,7 +11,7 @@ For the time being this is intended to passively monitor traffic rather than use
   * Has a many to many relationship with SSIDs
 * Ssid - A unique SSID that was seen in the 'info' field of the packet
   * Has a many to many relationship with devices
-* Activetime - Hours that a device has been seen. 
+* Activetime - Hours that a device has been seen.
   * Has a many to many relationship with devices
 * Person - A way of correlating multiple devices that seem to share mac addresses
   * A string representing devices and ssids that might be associated with an individual person
@@ -19,21 +19,25 @@ For the time being this is intended to passively monitor traffic rather than use
 ## API endpoints:
 * /api/v1/devices
   * Index for all devices
-* /api/v1/devices/1 
+* /api/v1/devices/:id
   * Show for a device
+* /api/v1/devices/:id/ssids
+  * returns all of the ssids for a devices
+* /api/v1/devices/:id/activetimes
+  * returns an array containing timestamps rounded to the nearest hour of times a device was active
 * /api/v1/ssids
   * Index for all SSIDs
-* /api/v1/ssids/1
+* /api/v1/ssids/:id
   * Show for an SSID
-  
+
 ## Custom Rake Tasks
 * [set_interface.rake](https://github.com/boveus/wifinder-api/blob/master/lib/tasks/set_interface.rake)
-  * Sets the interface to be used in the other two tasks in `config/config.yml` 
+  * Sets the interface to be used in the other two tasks in `config/config.yml`
 * [set_to_monitor.rake](https://github.com/boveus/wifinder-api/blob/master/lib/tasks/set_to_monitor.rake)
   * Sets a device to monitor mode if specified in the config file of the interface=<interface> argument
-* [capture.rake](https://github.com/boveus/wifinder-api/blob/master/lib/tasks/capture.rake) 
+* [capture.rake](https://github.com/boveus/wifinder-api/blob/master/lib/tasks/capture.rake)
   * Ingests data and adds it to the SQL database on the fly using a rake task that runs [tshark](https://www.wireshark.org/docs/man-pages/tshark.html)
-  
+
 # Getting Started #
 
 ## Pre-requistite Hardware ##
