@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       get '/devices/:id/ssids', to: "devices#ssids", as: 'device_ssids'
       resources :devices
       resources :ssids
+      get '/administration/capture_device', to: "administration#capture_device"
+      get '/administration/set_capture_device/:device_id', to: "administration#set_capture_device"
+      get '/administration/start_capture', to: "administration#start_capture"
     end
   end
 end
