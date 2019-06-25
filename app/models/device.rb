@@ -24,8 +24,4 @@ class Device < ApplicationRecord
       "#{comma}['active', new Date(0,0,0,#{hour},0,0), new Date(0,0,0,#{hour + 1},0,0)]"
     end
   end
-
-
-
-
 end
