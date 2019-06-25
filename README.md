@@ -17,6 +17,12 @@ For the time being this is intended to passively monitor traffic rather than use
   * A string representing devices and ssids that might be associated with an individual person
 
 ## API endpoints:
+* /api/v1/administration/set_capture_device/:device_id
+  * sets the capture interface to the specified device id
+* /api/v1/administration/capture_device
+  * returns the currently configured capturing interface
+* /api/v1/administration/start_capture
+  * Work in progress - this will initiate the packet capturing
 * /api/v1/devices
   * Index for all devices
 * /api/v1/devices/:id
