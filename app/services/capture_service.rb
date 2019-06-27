@@ -2,18 +2,12 @@ require 'pty'
 
 class CaptureService
   def self.capture
-    psi = PacketStreamIngestor.new
-    interface = YAML.load(File.read('./config/config.yml'))['device']
-    cmd = "tshark -i #{interface} -f 'subtype probereq' -t ad -T tabs -o nameres.mac_name:FALSE"
-    # -f specifies it to only capture using the specified filter (probe requests)
-    # -t ad specifies to use the absolute time with a date added
-    # -T tabs specifies the format of the output
-    # -o nameres.mac_name:FALSE is to disable the vendor OUI lookup, so we receive a valid MAC
-    # https://www.wireshark.org/docs/wsug_html_chunked/ChCustCommandLine.html
     begin
+      psi = PacketStreamIngestor.new
       PTY.spawn( cmd ) do |stdout, stdin, pid|
         begin
           stdout.each do |line|
+            puts line
             psi.ingest_from_stream(line)
           end
         rescue Errno::EIO
@@ -26,5 +20,18 @@ class CaptureService
     rescue PTY::ChildExited
       puts "The child process exited!"
     end
+  end
+
+  def self.interface
+    YAML.load(File.read('./config/config.yml'))['device']
+  end
+
+  def self.cmd
+    "tshark -i #{interface} -f 'subtype probereq' -t ad -T tabs -o nameres.mac_name:FALSE"
+    # -f specifies it to only capture using the specified filter (probe requests)
+    # -t ad specifies to use the absolute time with a date added
+    # -T tabs specifies the format of the output
+    # -o nameres.mac_name:FALSE is to disable the vendor OUI lookup, so we receive a valid MAC
+    # https://www.wireshark.org/docs/wsug_html_chunked/ChCustCommandLine.html
   end
 end
