@@ -13,21 +13,43 @@ class Api::V1::AdministrationController < ApplicationController
 
   def start_capture
     if get_capture_device
-      run_capture_task
-      render status: 200, json: {message: "Sucessfully started capturing on #{interface_params}"}
+      job = run_capture_task
+      render status: 200, json: {
+        message: "Sucessfully started capturing on #{get_capture_device}",
+        job_id: "#{job.job_id}"}
     else
       render status: 500, json: {message: "error"}
     end
   end
 
+  def check_status
+    if get_status
+      render status: 204
+    else
+      render status: 200
+    end
+  end
+
   private
 
+  def get_status
+    if interface_params
+      CaptureService.no_packets?(interface_params)
+    else
+      CaptureService.no_packets?
+    end
+  end
+
   def run_capture_task
-    CaptureService.capture
+    StartCaptureJob.perform_later
   end
 
   def interface_params
     params[:device_id]
+  end
+
+  def status_params
+    params[:interval]
   end
 
   def set_yml_capture_device(interface)

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get '/administration/capture_device', to: "administration#capture_device"
       get '/administration/set_capture_device/:device_id', to: "administration#set_capture_device"
       get '/administration/start_capture', to: "administration#start_capture"
+      get '/administration/check_status(/:interval)', to: "administration#check_status"
     end
   end
 end

@@ -23,6 +23,10 @@ For the time being this is intended to passively monitor traffic rather than use
   * returns the currently configured capturing interface
 * /api/v1/administration/start_capture
   * This will initiate the packet capture using tshark
+* /api/v1/administration/check_status/(:interval)
+  * This endpoint checks if a packet has been collected in the past 60 seconds or the interval specified in the request (in seconds)
+  * If a packet has been added to the database within the interval, it will return a 200 response, otherwise it will return a 204
+  * This is meant to be polled to detect collection problems
 * /api/v1/devices
   * Index for all devices
 * /api/v1/devices/:id

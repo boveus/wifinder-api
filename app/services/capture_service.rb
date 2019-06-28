@@ -1,6 +1,9 @@
 require 'pty'
-
 class CaptureService
+  def self.no_packets?(seconds = 60)
+    (Time.now - seconds) > Packet.newest.created_at
+  end
+
   def self.capture
     begin
       psi = PacketStreamIngestor.new
