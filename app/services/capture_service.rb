@@ -10,7 +10,6 @@ class CaptureService
       PTY.spawn( cmd ) do |stdout, stdin, pid|
         begin
           stdout.each do |line|
-            puts line
             psi.ingest_from_stream(line)
           end
         rescue Errno::EIO
