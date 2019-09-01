@@ -18,6 +18,7 @@ class Device < ApplicationRecord
     activetimes.map(&:hour)
   end
 
+  # Pending deletion, the data should be transformed on the front end.
   def all_active_hours_for_chart
     all_active_hours.each_with_index.map do |hour, index|
       index == 0 ? comma = '' : comma = ','

@@ -8,7 +8,7 @@ class Api::V1::DevicesController < ApplicationController
   end
 
   def ssids
-    render json: device.ssids
+    render json: device.ssids.unique
   end
 
   def activetimes
@@ -22,6 +22,7 @@ class Api::V1::DevicesController < ApplicationController
   end
 
   def device
-    Device.find(params[:id])
+    id = params[:id] || params[:device_id]
+    Device.find(id)
   end
 end
