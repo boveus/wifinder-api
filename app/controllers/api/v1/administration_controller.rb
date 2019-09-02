@@ -11,6 +11,14 @@ class Api::V1::AdministrationController < ApplicationController
     end
   end
 
+  def set_capture_device_to_monitor
+    if set_device_to_monitor
+      render status: 200, json: {message: "Successfully set #{get_capture_device} to monitor mode"}
+    else
+      render status: 500, json: {message: "error"}
+    end
+  end
+
   def start_capture
     if get_capture_device
       job = run_capture_task
@@ -42,6 +50,10 @@ class Api::V1::AdministrationController < ApplicationController
 
   def run_capture_task
     StartCaptureJob.perform_later
+  end
+
+  def set_device_to_monitor
+     SetDeviceToMonitorService.set
   end
 
   def interface_params

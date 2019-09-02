@@ -4,13 +4,16 @@ class CaptureService
     (Time.now - seconds) > Packet.newest.created_at
   end
 
-  def self.capture
+  def self.capture(verbose=false)
     begin
       psi = PacketStreamIngestor.new
       PTY.spawn( cmd ) do |stdout, stdin, pid|
         begin
           stdout.each do |line|
             psi.ingest_from_stream(line)
+            if verbose
+              puts line
+            end
           end
         rescue Errno::EIO
           return "I tried to capture using the device #{interface}.  Is this correct?\n
