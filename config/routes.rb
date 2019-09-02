@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         get '/set_capture_device/:device_id', action: "set_capture_device"
         get '/start_capture', action: "start_capture"
         get '/check_status(/:interval)', action: "check_status"
+        get '/available_devices', action: "available_devices"
       end
     end
   end

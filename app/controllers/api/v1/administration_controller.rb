@@ -38,6 +38,10 @@ class Api::V1::AdministrationController < ApplicationController
     end
   end
 
+  def available_devices
+    render json: {body: ShowWirelessInfoService.run_iwconfig}
+  end
+
   private
 
   def get_status
