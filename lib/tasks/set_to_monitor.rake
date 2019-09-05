@@ -4,5 +4,7 @@ task :set_to_monitor do
   specified_interface = ENV["interface"]
   if SetDeviceToMonitorService.set(specified_interface)
     printf "Success\n"
+  else
+  	printf "Failure!  Please ensure you ran 'rake set_interface'\n"
   end
 end

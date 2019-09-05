@@ -1,6 +1,9 @@
 class SetDeviceToMonitorService
     def self.set(interface=nil)
-    	interface ||= YAML.load(File.read('./config/config.yml'))['device']
+    	config_file = YAML.load(File.read('./config/config.yml'))
+    	return false if !config_file
+    	interface = config_file['device']
+    	return false if !interface
     	set_to_monitor(interface)
     	check_device(interface)
 	end
@@ -13,12 +16,8 @@ class SetDeviceToMonitorService
 	end
 
 	def self.set_to_monitor(interface)
-	  unless interface.empty?
-	  	`sudo ip link set #{interface} down`
-	    `sudo iwconfig #{interface} mode monitor`
-	    `sudo ip link set #{interface} up`
-	  else
-	    "ERROR: No device specified! \n"
-	  end
+  	  `sudo ip link set #{interface} down`
+      `sudo iwconfig #{interface} mode monitor`
+      `sudo ip link set #{interface} up`
 	end
 end
