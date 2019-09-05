@@ -53,12 +53,17 @@ For the time being this is intended to passively monitor traffic rather than use
 ## Pre-requistite Hardware ##
 - A network interface [card](https://www.acrylicwifi.com/en/support-webinars-wifi-wireless-network-software-tools/compatible-hardware/) capable of [monitor mode](https://en.wikipedia.org/wiki/Monitor_mode)
 
+# Production / Rasberry Pi
+
+See the [wiki article](https://github.com/boveus/wifinder-api/wiki/Configuring-the-Wifinder-API-on-a-Raspberry-Pi)
+
+# Development 
+
 ## Pre-requistite Software ##
 - Some version of linux/unix. (Monitoring mode for WiFi NICs is not well supported in OSX/Windows)
 - I tested this in Ubuntu 16.04
 - [Rails](http://installrails.com/)
 - [Wireshark](https://www.wireshark.org/)
-
 
 ## Clone the project and install the ruby dependencies
 ```bash
