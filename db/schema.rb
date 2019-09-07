@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_184833) do
+ActiveRecord::Schema.define(version: 2019_09_07_205911) do
 
   create_table "activetimes", force: :cascade do |t|
     t.datetime "time"
@@ -66,6 +66,21 @@ ActiveRecord::Schema.define(version: 2019_06_23_184833) do
     t.string "nickname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ssid_locations", force: :cascade do |t|
+    t.integer "ssid_id"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.string "country"
+    t.string "region"
+    t.string "housenumber"
+    t.string "road"
+    t.string "city"
+    t.string "postalcode"
+    t.date "first_seen"
+    t.date "last_seen"
+    t.index ["ssid_id"], name: "index_ssid_locations_on_ssid_id"
   end
 
   create_table "ssids", force: :cascade do |t|
