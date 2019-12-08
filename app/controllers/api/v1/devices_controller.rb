@@ -3,6 +3,10 @@ class Api::V1::DevicesController < ApplicationController
     render json: devices
   end
 
+  def count
+    render json: devices_count
+  end
+
   def show
     render json: device
   end
@@ -16,6 +20,10 @@ class Api::V1::DevicesController < ApplicationController
   end
 
   private
+
+  def devices_count
+    Device.count
+  end
 
   def devices
     Device.all
