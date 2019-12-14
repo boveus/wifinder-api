@@ -99,5 +99,5 @@ Note: you will only need to run the `set_interface` command once - this will sav
 ```bash
 rake capture
 # Optionally, enable verbose mode to see the console output as tshark collects packets
-rake capture verbose=true
+rake capture verbosity=true
 ```
