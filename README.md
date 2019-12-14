@@ -102,8 +102,8 @@ To set up your database before collecting, you will need to run the following co
 bundle exec rake db:create db:migrate 
 ```
 or
-WARNING: this command will drop your existing database (if there is one) and you may lose any packets you have collected.
 ```bash
+# WARNING: this command will drop your existing database (if there is one) and you may lose any packets you have collected.
 bundle exec rake db:setup
 ```
 
