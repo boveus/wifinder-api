@@ -95,9 +95,21 @@ rake set_to_monitor
 ```
 Note: you will only need to run the `set_interface` command once - this will save the device ID to a config file.
 
+## Set up database
+You will need to create a new database for the capture command to write data to.  You should only need to run this command on the initial setup. I recommend backing up the database before running these commands if you aren't familiar with Rails.  For more details on what these commands do, see [this article](https://dev.to/neshaz/how-to-use-rake-db-commands-in-the-correct-way--50o2) 
+To set up your database before collecting, you will need to run the following commands in the root project directory:
+```bash
+bundle exec rake db:create db:migrate 
+```
+or
+```bash
+# WARNING: this command will drop your existing database (if there is one) and you may lose any packets you have collected.
+bundle exec rake db:setup
+```
+
 ## Start capturing
 ```bash
 rake capture
 # Optionally, enable verbose mode to see the console output as tshark collects packets
-rake capture verbose=true
+rake capture verbosity=true
 ```
