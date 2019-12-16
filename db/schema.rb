@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_171746) do
+ActiveRecord::Schema.define(version: 2019_12_16_232844) do
 
   create_table "activetimes", force: :cascade do |t|
     t.datetime "time"
@@ -31,8 +31,6 @@ ActiveRecord::Schema.define(version: 2019_12_08_171746) do
     t.string "mac_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "manufacturer_id"
-    t.index ["manufacturer_id"], name: "index_devices_on_manufacturer_id"
   end
 
   create_table "devices_people", force: :cascade do |t|

@@ -1,20 +1,11 @@
 require 'oui'
 class Device < ApplicationRecord
   scope :more_than_five_ssids, -> { ssid.count > 5 }
-  after_create :find_manufacturer
 
   has_many :ssids
-  belongs_to :manufacturer
   has_and_belongs_to_many :ssids
   has_and_belongs_to_many :people
   has_and_belongs_to_many :activetimes, through: :activetimes_devices
-
-  def find_manufacturer
-    return if mac_address.blank?
-    lookup = OUI.find(mac_address)
-    manufacturer = Manufacturer.find_or_create_by(lookup).id
-    update(manufacturer_id: manufacturer)
-  end
 
   def active_hours(year=Time.now.year, month=Time.now.month, day=Time.now.day)
     activetimes.unique_hours(year, month, day)
