@@ -7,7 +7,7 @@ gem 'sqlite3', '~> 1.4.1'
 gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0'
 gem 'rack-cors', :require => 'rack/cors'
-gem 'oui-offline', '~> 1.2.7', git: 'git@github.com:boveus/oui.git'
+gem 'oui-offline', '~> 1.2.7'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
