@@ -1,11 +1,28 @@
 class Api::V1::SsidsController < ApplicationController
   def index
-    ssids = Ssid.all
     render json: ssids
   end
-  
+
+  def count
+    render json: ssids_count
+  end
+
   def show
-    ssid = Ssid.find(params[:id])
     render json: ssid
+  end
+
+  private
+
+  def ssids_count
+    Ssid.count
+  end
+
+  def ssids
+    Ssid.all
+  end
+
+  def ssid
+    id = params[:id]
+    Ssid.find(id)
   end
 end
