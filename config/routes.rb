@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get "devices/count", to: 'devices#count'
+      get "ssids/count", to: 'ssids#count'
       resources :devices do
         get '/activetimes', action: "activetimes"
         get "/ssids", action: "ssids"
