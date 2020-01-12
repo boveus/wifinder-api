@@ -7,7 +7,7 @@ gem 'sqlite3', '~> 1.4.1'
 gem 'puma', '~> 4.3'
 gem 'bootsnap', '>= 1.1.0'
 gem 'rack-cors', :require => 'rack/cors'
-gem 'oui-offline', '~> 1.2.7'
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
