@@ -1,4 +1,3 @@
-require 'oui'
 class Device < ApplicationRecord
   scope :more_than_five_ssids, -> { ssid.count > 5 }
 

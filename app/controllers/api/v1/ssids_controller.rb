@@ -1,6 +1,6 @@
 class Api::V1::SsidsController < ApplicationController
   def index
-    render json: ssids
+    render json: ssids.paginate(page: page)
   end
 
   def count
@@ -12,6 +12,10 @@ class Api::V1::SsidsController < ApplicationController
   end
 
   private
+
+  def page
+    params[:page] || 1
+  end
 
   def ssids_count
     Ssid.count

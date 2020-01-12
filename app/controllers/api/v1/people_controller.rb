@@ -1,6 +1,6 @@
 class Api::V1::PeopleController < ApplicationController
   def index
-    render json: people
+    render json: people.paginate(page: page)
   end
 
   def show
@@ -16,6 +16,10 @@ class Api::V1::PeopleController < ApplicationController
   end
 
   private
+
+  def page
+    params[:page] || 1
+  end
 
   def people
     Person.all

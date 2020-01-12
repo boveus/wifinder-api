@@ -1,6 +1,6 @@
 class Api::V1::DevicesController < ApplicationController
   def index
-    render json: devices
+    render json: devices.paginate(page: page)
   end
 
   def count
@@ -20,6 +20,10 @@ class Api::V1::DevicesController < ApplicationController
   end
 
   private
+
+  def page
+    params[:page] || 1
+  end
 
   def devices_count
     Device.count
